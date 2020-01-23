@@ -24,29 +24,44 @@
 function findTheY(linearEquation, xValue) {
   // Insert your code here
 
-  var eq = [], tmpStr = '';
-  for (i = 0; i <= linearEquation.length; i++) {
-    if (linearEquation[i] === '+' || i === linearEquation.length) {
-      eq.push(tmpStr);
+  var operator = [], x;
+  if (linearEquation[0] === '-') {
+    operator.push('-');
+    x = 1;
+  } else {
+    operator.push('+');
+    x = 0;
+  }
+
+  var operand = [], tmpStr = '';
+  for (i = x; i <= linearEquation.length; i++) {
+    if (linearEquation[i] === '+' || linearEquation[i] === '-' || i === linearEquation.length) {
+      if (linearEquation[i] === '+' || linearEquation[i] === '-') {
+        operator.push(linearEquation[i]);
+        // console.log(operator);
+      }
+      operand.push(tmpStr);
       tmpStr = '';
     } else {
       tmpStr += linearEquation[i];
     }
   }
-  // return eq;
+  // return operator;
+  // return operand;
   
   var num = 0;
-  for (i = 0; i < eq.length; i++) {
+  for (i = 0; i < operand.length; i++) {
     var tmpNum = '';
-    for (j = 0; j <= eq[i].length; j++) {
-      if (eq[i][j] === 'x') {
+    for (j = 0; j <= operand[i].length; j++) {
+      if (operand[i][j] === 'x') {
         tmpNum = Number(tmpNum) * xValue;
-      } else if (j === eq[i].length) {
+      } else if (j === operand[i].length) {
         tmpNum = Number(tmpNum);
       } else {
-        tmpNum += eq[i][j];
+        tmpNum += operand[i][j];
       }
     }
+    if (operator[i] === '-') {tmpNum *= -1;}
     // console.log(tmpNum.toString());
     num += tmpNum;
   }
@@ -57,3 +72,7 @@ function findTheY(linearEquation, xValue) {
 console.log(findTheY('2x+3', 2)) // 7
 console.log(findTheY('2x+3x', 3)) // 15
 console.log(findTheY('3x', 5)) // 15
+
+console.log(findTheY('2x-3', 2)) // 1
+console.log(findTheY('2x-3x', 3)) // -3
+console.log(findTheY('-3x', 5)) // -15

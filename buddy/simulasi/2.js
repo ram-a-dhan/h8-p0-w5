@@ -72,8 +72,8 @@ function howFarCanIGo(track, fuel) {
           }
         }
       }
-      return track;
-      // return {'Last Position': track, 'Finished?': areWeThereYet, 'Fuel Left': fuel};
+      // return track;
+      return {'Last Position': track, 'Finished?': areWeThereYet, 'Fuel Left': fuel};
 
 }
 
