@@ -28,6 +28,53 @@
  */
 function kenaRazia(date, data) {
   //code goes here
+  var lokasi = [
+    'Gajah Mada',
+    'Hayam Wuruk',
+    'Sisingamangaraja',
+    'Panglima Polim',
+    'Fatmawati',
+    'Tomang Raya',
+  ];
+  // return lokasi;
+  
+  var daftarTilang = [];
+  for (i = 0; i < data.length; i++) {
+
+    if (data[i].type !== 'Mobil') {continue;}
+    
+    var platArr = [], tmpStr = '';
+    for (x = 0; x <= data[i].plat.length; x++) {
+      if (data[i].plat[x] === ' ' || x === data[i].plat.length) {
+        platArr.push(tmpStr);
+        tmpStr = '';
+      } else {
+        tmpStr += data[i].plat[x];
+      }
+    }
+    var platGenap = platArr[1] % 2 === 0 ? true : false;
+    var tglGenap = date % 2 === 0 ? true : false;
+    console.log([tglGenap, platGenap]);
+    
+    if (platGenap === tglGenap) {continue;}
+    
+    var kenaTilang = 0;
+    for (j = 0; j < data[i].rute.length; j++) {
+      for (k = 0; k < lokasi.length; k++) {
+        if (data[i].rute[j] === lokasi[k]) {
+          kenaTilang++;
+        }
+      }
+    }
+    if (kenaTilang) {
+      daftarTilang.push({
+        name: data[i].name,
+        tilang: kenaTilang,
+      });
+    }
+  }
+  return daftarTilang;
+
 }
 console.log(
   kenaRazia(27, [

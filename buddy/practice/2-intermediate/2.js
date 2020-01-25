@@ -18,6 +18,24 @@ RULES:
 
 function nonPalindrome(string) {
   // code goes here
+
+  var array = [], tempString = '';
+  for (i = 0; i <= string.length; i++) {
+    if (string[i] === ' ' || i === string.length) {
+      var isNotPal = true;
+      for (j = 0; j < Math.floor(tempString.length/2); j++) {
+        if (tempString[j].toLowerCase() === tempString[tempString.length-1-j]) {
+          isNotPal = false;
+        }
+      }
+      if (isNotPal) {array.push(tempString);}
+      tempString = '';
+    } else {
+      tempString += string[i];
+    }
+  }
+  return array;
+
 }
 
 console.log(nonPalindrome("Wow mereka janji bertemu di makam"));

@@ -50,6 +50,24 @@
 
 function getData(pembelian, stock) {
   // code goes here
+  
+  var kasir = 0;
+  for (i = 0; i < pembelian.length; i++) {
+    for (j = 0; j < stock.length; j++) {
+      if (pembelian[i][0] === stock[j][0] && pembelian[i][1] <= stock[j][1]) {
+        stock[j][1] -= pembelian[i][1];
+        kasir += stock[j][2] * pembelian[i][1];
+      }
+    }
+  }
+  
+  var stockpile = {
+    stock: stock,
+    revenue: kasir,
+  };
+
+  return stockpile;
+
 }
 
 var order = [
