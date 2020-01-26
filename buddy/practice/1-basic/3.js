@@ -21,6 +21,18 @@ RULES:
 // write the function here
 function splitMe(str) {
   // code goes here
+
+  var arr = [], tmpArr = [];
+  for (i = 0; i <= str.length; i++) {
+    if (str[i] === ',' || str[i] === '$' || str[i] === '#' || i === str.length) {
+      arr.push(tmpArr);
+      tmpArr = [];
+    } else {
+      tmpArr.push(str[i]);
+    }
+  }
+  return arr;
+
 }
 
 console.log(splitMe("aqrst,ukaei,ffooo"));

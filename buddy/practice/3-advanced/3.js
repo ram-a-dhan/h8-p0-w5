@@ -41,6 +41,27 @@ function simpleCardsFusion(str) {
     }
   ];
   // code goes here
+
+  var cards = [], tmpStr = '';
+  for (i = 0; i <= str.length; i++) {
+    if (str[i] === '+' || i === str.length) {
+      cards.push(tmpStr);
+      tmpStr = '';
+    } else {
+      tmpStr += str[i];
+    }
+  }
+  // return cards;
+
+  for (i = 0; i < fusionCards.length; i++) {
+    if ((cards[0] === fusionCards[i].card1 && cards[1] === fusionCards[i].card2) || (cards[0] === fusionCards[i].card2 && cards[1] === fusionCards[i].card1)) {
+      return fusionCards[i].name;
+    } else {
+      var match = false;
+    }
+  }
+  if (!match) {return 'fusion failed';}
+
 }
 
 console.log(

@@ -22,12 +22,12 @@ RULES:
 Algoritma:
 1. cek, jika "str" sama dengan string kosong Atau "viruses" sama dengan string kosong Atau 'viruses' sama dengan undefined, maka kembalikan nilai string 'No virus detected'
 2. buat variable baru dengan nama 'strToLowerCase' dengan nilai str.toLowerCase(), untuk mengubah huruf kapital menjadi huruf kecil
-3. buat varibale baru dengan nama 'virusesToLowerCase' dengan nilai viruses.toLowerCase()
-4. buat varibale baru dengan nama 'virusesToLowerCaseSplit' dengan nilai "virusesToLowerCase".split('|'), untuk menghapus tanda '|'.
+3. buat variable baru dengan nama 'virusesToLowerCase' dengan nilai viruses.toLowerCase()
+4. buat variable baru dengan nama 'virusesToLowerCaseSplit' dengan nilai "virusesToLowerCase".split('|'), untuk menghapus tanda '|'.
 5. buat variable baru lagi dengan nama 'count' dengan nilai 0
 6. lakukan nested looping pada 'strToLowerCase' dan "virusesToLowerCaseSplit" sampai akhir nilai
   6a. jika 'strToLowerCase' index ke a sama dengan "virusesToLowerCaseSplit" index ke b, maka count bertambah satu
-7. buat variable dengan namam "front" dengan nilai string 'virus'
+7. buat variable dengan nama "front" dengan nilai string 'virus'
 8. buat variable dengan nama "back" dengan nilai string 'detected'
 9. jika count lebih dari satu, maka "front" nilai nya diganti dengan string 'viruses'. jika tidak memenuhi lanjut step 10.
 10. jika count sama dengan 1, maka 'front'. jika tidak memenuhi, lanjut step 11
@@ -37,6 +37,50 @@ Algoritma:
 
 function virusCheck(str, viruses) {
   // code goes here
+
+  // if ((str || viruses) == '' || !viruses) {return 'no virus detected';}
+
+  // var strToLowerCase = str.toLowerCase();
+  // var virusesToLowerCase = viruses.toLowerCase();
+  // var virusesToLowerCaseSplit = virusesToLowerCase.split('|');
+  // var count = 0;
+  // var front = 'virus';
+  // var back = 'detected';
+
+  // for (i = 0; i < strToLowerCase.length; i++) {
+  //   for (j = 0; j < virusesToLowerCaseSplit.length; j++) {
+  //     if (strToLowerCase[i] === virusesToLowerCaseSplit[j]) {
+  //       count++;
+  //     }
+  //   }
+  // }
+  // if (count > 1) {
+  //   front = 'viruses';
+  // } else if (count === 1) {
+  //   front;
+  // } else {
+  //   return 'no virus detected';
+  // }
+  // return `${count} ${front} ${back}`;
+
+  if (!str || !viruses) {return 'no virus detected';}
+
+  var string = str.toLowerCase();
+  var virus = viruses.toLowerCase().split('|');
+  var count = 0;
+
+  for (i = 0; i < string.length; i++) {
+    for (j = 0; j < virus.length; j++) {
+      if (string[i] === virus[j]) {count++;}
+    }
+  }
+
+  var number = count ? count + ' ' : 'no ' ;
+  var front = 'virus';
+  front += count > 1 ? 'es' : '' ;
+  var back = 'detected';
+  return `${number}${front} ${back}`;
+
 }
 
 console.log(virusCheck("qlD4MZax0raQqew", "x|0|q")); // 5 viruses detected

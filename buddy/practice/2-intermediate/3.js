@@ -13,6 +13,28 @@ Contoh ada di test cases
 
 function participantsSummary(data) {
   // code goes here
+
+  if (!data.length) {return 'no participants';}
+  
+  var info = {};
+  for (i = 0; i < data.length; i++) {
+    var exists = false;
+    for (j in info) {
+      if (data[i][1] === j) {
+        exists = true;
+        info[j].total++;
+        info[j].names.push(data[i][0]);
+      }
+    }
+    if (!exists) {
+      info[data[i][1]] = {
+        total: 1,
+        names: [data[i][0]],
+      };
+    }
+  }
+  return info;
+
 }
 
 // Test cases

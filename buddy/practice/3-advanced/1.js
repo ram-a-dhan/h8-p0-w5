@@ -48,6 +48,25 @@
  *
  */
 
+////PSEUDOCODE
+// DECLARE kasir & ASSIGN 0
+// FOR each element in pembelian
+//   FOR each element in stock
+//     IF item name in pembelian EQUALS item name in stock AND number of item in pembelian LESS THAN OR EQUAL TO number of item in stock THEN
+//       SUBSTRACT number of item in stock with number of item in pembelian
+//       ADD item price in stock MULTIPLIED BY number of item in pembelian TO kasir
+//     ENDIF
+//   ENDFOR
+// ENDFOR
+
+// DECLARE stockpile as OBJECT containing
+//   'stock' as key & stock as value
+//   'revenue' as key & kasir as value
+// ENDDECLARE
+
+// RETURN/PRINT stockpile
+////
+
 function getData(pembelian, stock) {
   // code goes here
   
